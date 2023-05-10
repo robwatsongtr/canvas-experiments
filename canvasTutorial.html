@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" 
+      content="width=device-width", 
+      initial-scale="1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Canvas tutorial</title>
-    <script src="draw.js"></script>
-    <style>
-      canvas {
-        border: 1px solid black;
-      }
-    </style>
+    
+    <link rel="stylesheet" href="style.css" />
   </head>
-
-  <!-- draw function is executed once the page is loaded -->
-  <body onload="draw()">
+  <body>
+    <h1>Canvas Crash Course</h1>
     <!-- The canvas element has only two attributes, width and height-->
-    <canvas id="tutorial" width="150" height="150">
+    <canvas id="canvas" width="600" height="600">
       This is the canvas (Accessibility fallback text)
     </canvas>
+    <script src="script.js"></script>
   </body>
-
 </html>
