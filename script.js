@@ -23,7 +23,7 @@ for( let rect of rectangles )  {
   rect.draw(ctx)
 }
 
-// Draw Ball 1  ---------------------
+// Draw Ball 1, only move on x axis 
 // ( xpos, ypos, sizeRadius, color, dx, dy )
 const ball1 = new Ball( 200, 205, 10, "purple", 5, 0 )
 ball1.draw(ctx)
@@ -50,6 +50,7 @@ function animateBall1() {
   ball1.xpos += ball1.dx 
   ball1.ypos += ball1.dy
 
+  // draw ball
   ball1.draw(ctx)
 
   // left / right wall collision detection and reverse path 
@@ -61,7 +62,74 @@ function animateBall1() {
   // in milliseconds (1000 is one frame per second)
   setTimeout( () => {
     requestAnimationFrame(animateBall1)
-   }, 0)
+   }, 15)
 }
 
 animateBall1()
+
+// draw ball 2 only move on Y axis
+const ball2 = new Ball( 200, 30, 10, "red", 0, 5 )
+ball2.draw(ctx)
+
+function animateBall2() {
+  // clear previous position along path
+  ctx.clearRect(
+    ball2.xpos - ball2.sizeRadius, 
+    ball2.ypos - ball2.sizeRadius, 
+    ball2.sizeRadius * 2, 
+    ball2.sizeRadius * 2
+  );
+
+  // change position
+  ball2.xpos += ball2.dx 
+  ball2.ypos += ball2.dy
+
+  // draw ball
+  ball2.draw(ctx)
+
+  // left / right wall collision detection and reverse path 
+  if( ball2.ypos + (ball1.sizeRadius * 2) > canvas.height || ball2.ypos - (ball2.sizeRadius * 2) < 0 ) {
+    ball2.dy *= -1
+  }
+
+  // Animate but adjust 'frame rate' with setTimeout, last argument is time between draws
+  // in milliseconds (1000 is one frame per second)
+  setTimeout( () => {
+    requestAnimationFrame(animateBall2)
+   }, 10)
+}
+
+animateBall2()
+
+const ball3 = new Ball( 400, 30, 10, "gray", 0, 5 )
+ball3.draw(ctx)
+
+function animateBall3() {
+  // clear previous position along path
+  ctx.clearRect(
+    ball3.xpos - ball3.sizeRadius, 
+    ball3.ypos - ball3.sizeRadius, 
+    ball3.sizeRadius * 2, 
+    ball3.sizeRadius * 2
+  );
+
+  // change position
+  ball3.xpos += ball3.dx 
+  ball3.ypos += ball3.dy
+
+  // draw ball
+  ball3.draw(ctx)
+
+  // left / right wall collision detection and reverse path 
+  if( ball3.ypos + (ball3.sizeRadius * 2) > canvas.height || ball3.ypos - (ball3.sizeRadius * 2) < 0 ) {
+    ball3.dy *= -1
+  }
+
+  // Animate but adjust 'frame rate' with setTimeout, last argument is time between draws
+  // in milliseconds (1000 is one frame per second)
+  setTimeout( () => {
+    requestAnimationFrame(animateBall3)
+   }, 0)
+}
+
+animateBall3()
