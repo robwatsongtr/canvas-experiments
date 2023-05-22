@@ -1,6 +1,23 @@
 
 export class Ball {
-  constructor( xpos, ypos, sizeRadius, color, dx, dy, frameDelay ) {
+
+  private xpos: number;
+  private ypos: number;
+  private sizeRadius: number;
+  private color: string;
+  private dx: number;
+  private dy: number;
+  private frameDelay: number;
+
+  constructor( 
+      xpos: number, 
+      ypos: number, 
+      sizeRadius: number, 
+      color: string, 
+      dx: number, 
+      dy: number, 
+      frameDelay: number 
+    ) {
     this.xpos = xpos
     this.ypos = ypos
     this.sizeRadius = sizeRadius
@@ -10,14 +27,14 @@ export class Ball {
     this.frameDelay = frameDelay
   }
 
-  draw(ctx) {
+  draw(ctx: CanvasRenderingContext2D) {
     ctx.beginPath()
     ctx.arc( this.xpos, this.ypos, this.sizeRadius,0, Math.PI * 2 )
     ctx.fillStyle = this.color
     ctx.fill()
   }
 
-  animateHoriz(ctx) {
+  animateHoriz(ctx: CanvasRenderingContext2D) {
     // clear previous position of object along path:   
     //
     // clearRect(x, y, width, height)
@@ -43,7 +60,7 @@ export class Ball {
 
     // left right collision detection 
     if ( 
-      this.xpos + (this.sizeRadius * 2) > canvas.width || 
+      this.xpos + (this.sizeRadius * 2) > ctx.canvas.width || 
       this.xpos - (this.sizeRadius * 2) < 0 
     ) {
       this.dx *= -1
@@ -55,7 +72,7 @@ export class Ball {
     }, this.frameDelay)
   }
 
-  animateVert(ctx) {
+  animateVert(ctx: CanvasRenderingContext2D) {
     ctx.clearRect(
       this.xpos - this.sizeRadius, 
       this.ypos - this.sizeRadius, 
@@ -70,7 +87,7 @@ export class Ball {
 
     // up down collision detecton 
     if ( 
-      this.ypos + (this.sizeRadius * 2) > canvas.height || 
+      this.ypos + (this.sizeRadius * 2) > ctx.canvas.height || 
       this.ypos - (this.sizeRadius * 2) < 0 
     ) {
       this.dy *= -1
