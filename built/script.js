@@ -1,12 +1,6 @@
 import { Rectangle } from './Rectangle.js';
 import { Ball } from './Ball.js';
-// reference: https://www.youtube.com/watch?v=gm1QtePAYTM
-// 'as HTMLCanvasElement' is a type assertion, also known as a type cast, 
-// which tells the TypeScript compiler to treat the value returned by document.getElementById('canvas') 
-// as an HTMLCanvasElement. 
-//
-// Since getElementById returns a generic HTMLElement or null, 
-// the type assertion is necessary to inform TypeScript about the specific type.
+
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 const rectangles = [
